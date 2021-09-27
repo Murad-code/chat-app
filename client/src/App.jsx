@@ -56,6 +56,7 @@ const App = () => {
           setIsCreating={setIsCreating}
           setCreateType={setCreateType}
           setIsEditing={setIsEditing}
+          isEditing={isEditing}
           createType={createType}
         />
       </Chat>

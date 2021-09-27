@@ -8,6 +8,7 @@ const ChannelContainer = ({
   setIsCreating,
   setCreateType,
   setIsEditing,
+  isEditing,
   createType,
 }) => {
   const { channel } = useChatContext();
@@ -28,18 +29,25 @@ const ChannelContainer = ({
   }
 
   const EmptyState = () => {
-    <div className="channel-empty__container">
-        <p className="channel-empty__first">This is the beginning of your chat history</p>
-        <p className="channel-empty__second">Send messages, attachments, links, emojis, and more!</p>
-    </div>
-  }
+    return (
+      <div className="channel-empty__container">
+        <p className="channel-empty__first">
+          This is the beginning of your chat history
+        </p>
+        <p className="channel-empty__second">
+          Send messages, attachments, links, emojis, and more!
+        </p>
+      </div>
+    );
+  };
 
   return (
     <div className="channel__container">
-      <Channel>
-          EmptyStateIndicator={EmptyState}
-          Message={(messageProps, i) => <TeamMessage key={i} {...messageProps} /> }
-          <ChannelInner setIsEditing={setIsEditing} />
+      <Channel
+        EmptyStateIndicator={EmptyState}
+        Message={(messageProps, i) => <TeamMessage key={i} {...messageProps} />}
+      >
+        <ChannelInner setIsEditing={setIsEditing} />
       </Channel>
     </div>
   );
